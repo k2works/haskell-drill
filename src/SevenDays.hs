@@ -35,3 +35,8 @@ fibNthPair n = fibNextPair (fibNthPair (n - 1))
 
 fib2 :: Integer -> Integer
 fib2 = fst . fibNthPair
+
+-- リストを作り出す
+allEven :: [Integer] -> [Integer]
+allEven [] = []
+allEven (h : t) = if even h then h : allEven t else allEven t

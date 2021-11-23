@@ -30,3 +30,7 @@ spec = do
       fibNthPair (8) `shouldBe` (21, 34)
     it "フィボナッチ数を返す" $
       fib2 100 `shouldBe` 354224848179261915075
+
+  describe "リストを作り出す" $ do
+    it "リストから偶数を取り出して返す" $
+      allEven [1, 2, 3, 4, 5] `shouldBe` [2, 4]
