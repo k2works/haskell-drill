@@ -61,3 +61,9 @@ spec = do
 
     it "畳み込み2" $
       foldl1 (+) [1 .. 3] `shouldBe` 6
+
+  describe "部分適用関数とカリー化" $ do
+    it "部分適用関数" $
+      (\x -> x + 1) 2 `shouldBe` 3
+    it "カリー化" $
+      (\x -> \y -> x + y) 1 2 `shouldBe` 3
