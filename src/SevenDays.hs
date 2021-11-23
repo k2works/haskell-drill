@@ -40,3 +40,13 @@ fib2 = fst . fibNthPair
 allEven :: [Integer] -> [Integer]
 allEven [] = []
 allEven (h : t) = if even h then h : allEven t else allEven t
+
+-- リスト内包表記
+doubleList :: [Integer] -> [Integer]
+doubleList list = [x * 2 | x <- list]
+
+matchList :: [(Integer, Integer)] -> [(Integer, Integer)]
+matchList list = [(y, x) | (x, y) <- list]
+
+combList :: [String] -> [(String, String)]
+combList crew = [(a, b) | a <- crew, b <- crew, a < b]

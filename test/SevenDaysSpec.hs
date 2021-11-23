@@ -34,3 +34,11 @@ spec = do
   describe "リストを作り出す" $ do
     it "リストから偶数を取り出して返す" $
       allEven [1, 2, 3, 4, 5] `shouldBe` [2, 4]
+
+  describe "リスト内包表記" $ do
+    it "リスト内のすべての項を2倍する" $
+      doubleList [1, 2, 3] `shouldBe` [2, 4, 6]
+    it "リスト内包表記でパターンマッチングを使う" $
+      matchList [(1, 2), (2, 3), (3, 1)] `shouldBe` [(2, 1), (3, 2), (1, 3)]
+    it "組み合わせを計算する" $
+      combList ["Kirk", "Spock", "McCoy"] `shouldBe` [("Kirk", "Spock"), ("Kirk", "McCoy"), ("McCoy", "Spock")]
