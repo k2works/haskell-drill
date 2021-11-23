@@ -22,3 +22,11 @@ spec = do
       fibResult (0, 1, 4) `shouldBe` 0
     it "フィボナッチ数を返す" $
       fib 100 `shouldBe` 354224848179261915075
+
+  describe "タプルと合成" $ do
+    it "一組のペアを計算する" $
+      fibNextPair (1, 2) `shouldBe` (2, 3)
+    it "数列内の任意の一組を求める" $
+      fibNthPair (8) `shouldBe` (21, 34)
+    it "フィボナッチ数を返す" $
+      fib2 100 `shouldBe` 354224848179261915075
