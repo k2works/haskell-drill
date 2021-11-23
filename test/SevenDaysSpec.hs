@@ -5,17 +5,16 @@ import Test.Hspec
 
 spec :: Spec
 spec = do
-  describe "double" $ do
+  describe "基本的な関数の定義" $ do
     it "2倍にして返す" $
       double 5 `shouldBe` 10
 
-  describe "factorial" $ do
+  describe "再帰" $ do
     it "3ならば6を返す" $
       factorial 3 `shouldBe` 6
-
-  describe "fact_with_guard" $ do
     it "3ならば6を返す" $
       fact_with_guard 3 `shouldBe` 6
+
   describe "タプルとリスト" $ do
     it "タプルを返す" $
       fibTuple (0, 1, 4) `shouldBe` (3, 5, 0)
