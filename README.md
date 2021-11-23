@@ -25,6 +25,9 @@
 choco install haskell-stack
 stack setup
 stack new haskell-drill
+stack update
+stack install haskell-dap ghci-dap haskell-debug-adapter
+stack install hspec hspec-discover
 ```
 
 **[⬆ back to top](#構成)**
