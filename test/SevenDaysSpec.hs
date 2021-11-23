@@ -5,8 +5,6 @@ import Test.Hspec
 
 spec :: Spec
 spec = do
-  describe "hello" $ do
-    it "standard" $
-      hello "world" `shouldBe` "hello, world"
-    it "empty" $
-      hello "" `shouldBe` "hello, "
+  describe "double" $ do
+    it "2倍にして返す" $
+      double 5 `shouldBe` 10

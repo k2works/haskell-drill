@@ -1,4 +1,4 @@
 module SevenDays where
 
-hello :: String -> String
-hello name = "hello, " ++ name
+double :: Integer -> Integer
+double x = x + x
