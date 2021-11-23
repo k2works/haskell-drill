@@ -55,3 +55,10 @@ combList crew = [(a, b) | a <- crew, b <- crew, a < b]
 squareAll list = map square list
   where
     square x = x * x
+
+-- 遅延評価
+myRange start step = start : (myRange (start + step) step)
+
+lazyFib x y = x:(lazyFib y (x + y))
+fib3 = lazyFib 1 1
+fibNth x = head(drop (x - 1) (take (x) fib3))

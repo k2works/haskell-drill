@@ -67,3 +67,25 @@ spec = do
       (\x -> x + 1) 2 `shouldBe` 3
     it "カリー化" $
       (\x -> \y -> x + y) 1 2 `shouldBe` 3
+
+  describe "遅延評価" $ do
+    it "無限範囲を作る" $
+      take 10 (myRange 10 1) `shouldBe` [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+
+    it "遅延評価とリスト合成を用いてフィボナッチ数列を作成する" $
+      take 5 (lazyFib 0 1) `shouldBe` [0, 1, 1, 2, 3]
+
+    it "遅延評価とリスト合成を用いてフィボナッチ数列を作成する" $
+      take 5 (fib3) `shouldBe` [1, 1, 2, 3, 5]
+
+    it "遅延評価とリスト合成を用いてフィボナッチ数列を作成する" $
+      take 5 (drop 20 (lazyFib 0 1)) `shouldBe` [6765, 10946, 17711, 28657, 46368]
+
+    it "遅延評価とリスト合成を用いてフィボナッチ数列を作成する" $
+      take 5 (zipWith (+) fib3 (drop 1 fib3)) `shouldBe` [2, 3, 5, 8, 13]
+
+    it "範囲の各項を2倍する" $
+      take 5 (map (* 2) [1 ..]) `shouldBe` [2, 4, 6, 8, 10]
+
+    it "部分適用関数および遅延数列と組み合わせる" $
+      take 5 (map ((* 2) . (* 5)) fib3) `shouldBe` [10, 10, 20, 30, 50]
