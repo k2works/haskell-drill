@@ -42,3 +42,22 @@ spec = do
       matchList [(1, 2), (2, 3), (3, 1)] `shouldBe` [(2, 1), (3, 2), (1, 3)]
     it "組み合わせを計算する" $
       combList ["Kirk", "Spock", "McCoy"] `shouldBe` [("Kirk", "Spock"), ("Kirk", "McCoy"), ("McCoy", "Spock")]
+
+  describe "高階関数" $ do
+    it "無名関数" $
+      (\x -> x ++ " captain.") "Logical," `shouldBe` "Logical, captain."
+
+    it "mapとwhere" $
+      squareAll [1, 2, 3] `shouldBe` [1, 4, 9]
+
+    it "セレクションと呼ばれる部分的な関数の一種と共にmapを使うこともできる" $
+      map (+ 1) [1, 2, 3] `shouldBe` [2, 3, 4]
+
+    it "filter, foldl, foldr" $
+      filter odd [1, 2, 3, 4, 5] `shouldBe` [1, 3, 5]
+
+    it "畳み込み" $
+      foldl (\x carryOver -> x + carryOver) 0 [1 .. 10] `shouldBe` 55
+
+    it "畳み込み2" $
+      foldl1 (+) [1 .. 3] `shouldBe` 6

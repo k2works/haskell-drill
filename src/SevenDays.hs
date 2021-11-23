@@ -50,3 +50,8 @@ matchList list = [(y, x) | (x, y) <- list]
 
 combList :: [String] -> [(String, String)]
 combList crew = [(a, b) | a <- crew, b <- crew, a < b]
+
+-- 高階関数
+squareAll list = map square list
+  where
+    square x = x * x
