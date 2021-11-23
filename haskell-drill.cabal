@@ -26,6 +26,7 @@ source-repository head
 library
   exposed-modules:
       Lib
+      SevenDays
       Some
   other-modules:
       Paths_haskell_drill
@@ -51,6 +52,7 @@ test-suite haskell-drill-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
+      SevenDaysSpec
       SomeSpec
       Paths_haskell_drill
   hs-source-dirs:
