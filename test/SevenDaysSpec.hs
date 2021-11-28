@@ -89,3 +89,7 @@ spec = do
 
     it "部分適用関数および遅延数列と組み合わせる" $
       take 5 (map ((* 2) . (* 5)) fib3) `shouldBe` [10, 10, 20, 30, 50]
+
+  describe "ユーザー定義の型" $ do
+    it "カード値を返す" $
+      cardValue (Ten, Hearts) `shouldBe` 1
