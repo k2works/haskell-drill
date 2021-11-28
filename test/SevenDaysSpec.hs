@@ -1,6 +1,7 @@
 module SevenDaysSpec (spec) where
 
 import SevenDays
+import SevenDays (Position (Position), attempt, crack)
 import Test.Hspec
 
 spec :: Spec
@@ -93,3 +94,19 @@ spec = do
   describe "ユーザー定義の型" $ do
     it "カード値を返す" $
       cardValue (Ten, Hearts) `shouldBe` 1
+
+  describe "モナド" $ do
+    it "酔った海賊1" $
+      treasureMap 5 `shouldBe` 10
+
+    it "酔った海賊2" $
+      letTreasureMap (1, 5) `shouldBe` 11
+
+    -- it "酔った海賊3" $
+    -- reasureMap2 (Position 0) `shouldBe` Position 5
+
+    it "さまざまな計算戦略1" $
+      let cartesian (xs, ys) = do x <- xs; y <- ys; return (x, y)
+       in cartesian ([1 .. 2], [3 .. 4]) `shouldBe` [(1, 3), (1, 4), (2, 3), (2, 4)]
+    it "さまざまな計算戦略2" $
+      crack `shouldBe` [("aaa", False), ("aab", False), ("aac", False), ("aba", False), ("abb", False), ("abc", False), ("aca", False), ("acb", False), ("acc", False), ("baa", False), ("bab", False), ("bac", False), ("bba", False), ("bbb", False), ("bbc", False), ("bca", False), ("bcb", False), ("bcc", False), ("caa", False), ("cab", True), ("cac", False), ("cba", False), ("cbb", False), ("cbc", False), ("cca", False), ("ccb", False), ("ccc", False)]

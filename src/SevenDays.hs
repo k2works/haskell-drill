@@ -1,5 +1,7 @@
 module SevenDays where
 
+import Data.Bits (Bits (xor))
+
 -- 基本的な関数の定義
 double :: Integer -> Integer
 double x = x + x
@@ -83,3 +85,52 @@ value Ace = 5
 
 cardValue :: Card -> Integer
 cardValue (rank, suit) = value rank
+
+-- モナド
+
+stagger :: (Num t) => t -> t
+stagger d = d + 2
+
+crawl d = d + 1
+
+treasureMap d =
+  crawl
+    ( stagger
+        ( stagger d
+        )
+    )
+
+letTreasureMap (v, d) =
+  let d1 = stagger d
+      d2 = stagger d1
+      d3 = crawl d2
+   in crawl d3
+
+data Position t = Position t deriving (Show)
+
+stagger2 (Position d) = Position (d + 2)
+
+crawl2 (Position d) = Position (d + 1)
+
+rtn x = x
+
+x >>== f = f x
+
+treasureMap2 pos = pos >>== stagger2 >>== stagger2 >>== crawl2 >>== rtn
+
+tryIo = do
+  putStr "Enter your name: "
+  line <- getLine
+  let backwards = reverse line
+  return ("Hello. Your name backwards is " ++ backwards)
+
+crack = do
+  x <- ['a' .. 'c']
+  y <- ['a' .. 'c']
+  z <- ['a' .. 'c']
+  let password = [x, y, z]
+  if attempt password
+    then return (password, True)
+    else return (password, False)
+
+attempt pw = if pw == "cab" then True else False
