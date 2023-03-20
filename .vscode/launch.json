@@ -7,7 +7,7 @@
     {
       "type": "ghc",
       "request": "launch",
-      "name": "haskell(stack)",
+      "name": "haskell(spec)",
       "internalConsoleOptions": "openOnSessionStart",
       "workspace": "${workspaceFolder}",
       "startup": "${workspaceFolder}/test/Spec.hs",
@@ -26,7 +26,7 @@
     {
       "type": "ghc",
       "request": "launch",
-      "name": "haskell(cabal)",
+      "name": "haskell(main)",
       "internalConsoleOptions": "openOnSessionStart",
       "workspace": "${workspaceFolder}",
       "startup": "${workspaceFolder}/app/Main.hs",
@@ -36,7 +36,7 @@
       "mainArgs": "",
       "ghciPrompt": "H>>= ",
       "ghciInitialPrompt": "> ",
-      "ghciCmd": "cabal repl -w ghci-dap --repl-no-load --builddir=${workspaceFolder}/.vscode/dist-cabal-repl",
+      "ghciCmd": "stack ghci --with-ghc=ghci-dap --test --no-load --no-build --main-is TARGET",
       "ghciEnv": {},
       "logFile": "${workspaceFolder}/.vscode/phoityne.log",
       "logLevel": "WARNING",
